@@ -1,0 +1,91 @@
+# -*- coding: utf-8 -*-
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QPoint
+
+from globals.constants import CSS
+
+
+class UiLogin(object):
+    def setup(self, Dialog):
+        self.setObjectName("Dialog")
+        Dialog.setEnabled(True)
+        Dialog.resize(193, 180)
+        Dialog.setWindowOpacity(0.97)
+        Dialog.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        pt = QPoint(QtGui.QCursor.pos())
+        pt.setX(pt.x() - Dialog.width())
+        pt.setY(pt.y() - Dialog.height())
+        Dialog.move(pt)
+
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
+        Dialog.setSizePolicy(sizePolicy)
+        Dialog.setStyleSheet(CSS)
+        self.username = QtWidgets.QLineEdit(Dialog)
+        self.username.setGeometry(QtCore.QRect(20, 60, 151, 22))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.username.setFont(font)
+        self.username.setText("")
+        self.username.setObjectName("username")
+        self.passw = QtWidgets.QLineEdit(Dialog)
+        self.passw.setGeometry(QtCore.QRect(20, 110, 151, 22))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.passw.setFont(font)
+        self.passw.setAutoFillBackground(False)
+        self.passw.setObjectName("passw")
+        self.passw.setEchoMode(QtWidgets.QLineEdit.Password)
+
+        self.btnLogin = QtWidgets.QPushButton(Dialog)
+        self.btnLogin.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnLogin.setGeometry(QtCore.QRect(95, 140, 75, 23))
+        self.btnLogin.setObjectName("btnLogin")
+
+        self.btnCancel = QtWidgets.QPushButton(Dialog)
+        self.btnCancel.setGeometry(QtCore.QRect(20, 140, 70, 23))
+        self.btnCancel.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnCancel.setObjectName("Button_Cancel")
+
+        self.lbl_err = QtWidgets.QLabel(Dialog)
+        self.lbl_err.setGeometry(QtCore.QRect(20, 20, 140, 13))
+        self.lbl_err.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.lbl_err.setObjectName("lbl_err")
+        self.lbl_err.hide()
+
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(20, 40, 47, 13))
+        self.label.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2.setGeometry(QtCore.QRect(20, 90, 47, 13))
+        self.label_2.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(100, 0, 91, 16))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
+        self.label_3.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.label_3.setObjectName("label_3")
+        self.retranslate(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslate(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "GSyncftp - Login"))
+        self.btnLogin.setText(_translate("Dialog", "Login"))
+        self.btnCancel.setText(_translate("Dialog", "Cancelar"))
+        self.lbl_err.setText(_translate("Dialog", "Usuário ou senha incorretos!"))
+        self.label.setText(_translate("Dialog", "Usuário"))
+        self.label_2.setText(_translate("Dialog", "Senha"))
+        self.label_3.setText(_translate("Dialog", "GSyncftp - Login"))
