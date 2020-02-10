@@ -109,7 +109,7 @@ QLineEdit{
          </font>
         </property>
         <property name="text">
-         <string> LIFTING ESTALEIROS LTDA</string>
+         <string> COORP LTDA</string>
         </property>
         <property name="textFormat">
          <enum>Qt::AutoText</enum>

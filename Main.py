@@ -8,7 +8,7 @@ import time
 # from asyncqt import QEventLoop
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QListWidgetItem
+from PyQt5.QtWidgets import QAction, QListWidgetItem, QStyleFactory
 from PyQt5.QtWidgets import QSystemTrayIcon, QApplication, QMenu, qApp
 
 from FileUtils import WatchFiles
@@ -25,7 +25,6 @@ if getattr(sys, 'frozen', False):
     APP_PATH = os.path.dirname(sys.executable)
 elif __file__:
     APP_PATH = os.path.dirname(__file__)
-# print(APP_PATH)
 
 
 def resource_path(relative_path):
@@ -38,10 +37,18 @@ def resource_path(relative_path):
 
 
 CONFIGS = {}
-if os.path.isfile(APP_PATH + "\\config.json"):
-    with open(APP_PATH + "\\config.json") as config_file:
-        CONFIGS = json.load(config_file)
-
+if not APP_PATH:
+    if os.path.isfile("config.json"):
+        with open("config.json") as config_file:
+            CONFIGS = json.load(config_file)
+    else:
+        print("File does not exist!\n%s" % APP_PATH + "\\config.json")
+else:
+    if os.path.isfile(APP_PATH + "\\config.json"):
+        with open(APP_PATH + "\\config.json") as config_file:
+            CONFIGS = json.load(config_file)
+    else:
+        print("File does not exist!\n%s" % APP_PATH + "\\config.json")
 
 @pyqtSlot("QWidget*", "QWidget*")
 def on_focus_out(old, now):
@@ -98,9 +105,16 @@ def swap_icon():
     task.status_synced()
 
 
+# Enable High DPI display with PyQt5
+QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+
 app = QApplication(sys.argv)
+app.setStyle("fusion")
 app.setQuitOnLastWindowClosed(False)
 qApp.focusChanged.connect(on_focus_out)
+
+if hasattr(QStyleFactory, 'AA_UseHighDpiPixmaps'):
+    app.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
 menu_login = QAction('Login')
 menu_login.triggered.connect(lambda: logout() if session.logged_status else Login(session).exec_())

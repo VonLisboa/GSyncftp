@@ -14,8 +14,9 @@ class Login(QDialog, UiLogin):
         self.login_status = login_status
         self.retorno = retorno
 
+    # online authentication
     def do_login(self):
-        url_api = "https://sistemas.lifting.com.br/lifting_ocs/Usuario/login"
+        url_api = "https://sitename.com/endpoint/login"
         data = parse.urlencode({
             "username": self.username.text(),
             "password": self.passw.text()

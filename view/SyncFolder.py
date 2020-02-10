@@ -38,6 +38,6 @@ class UiSyncFolder(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Manual Synchronize"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "Informe a pasta para backup"))
-        self.label.setText(_translate("Dialog", "OS"))
+        self.label.setText(_translate("Dialog", ">"))
         self.pushButton.setText(_translate("Dialog", "Enviar"))
         self.Button_Cancel.setText(_translate("Dialog", "Cancelar"))

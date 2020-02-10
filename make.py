@@ -31,4 +31,4 @@ os.system("pyinstaller --clean " +
           "--exclude-module FixTk "
           "--noconsole "
           # "--onefile "
-          "{}\\GSyncftp.py".format(os.getcwd()))
+          "{}\\Main.py".format(os.getcwd()))

@@ -38,8 +38,8 @@ class UploadFiles(QObject):
     @asyncio.coroutine
     async def __async_upload(self, file_path):
         try:
-            file_dest = file_path.replace(self.path_sync, "").replace("\\", '/')
-            async with aioftp.ClientSession("lft-srv-003", 21, "user_hass", "Insp3cti@n") as client:
+            file_dest = file_path.replace(self.path_sync, "").replace(os.environ["HOMEDRIVE"]+os.sep, "").replace("\\", '/')
+            async with aioftp.ClientSession("host", 21, "user", "pass") as client:
                 if not await client.exists(file_dest.split('/')[1]):
                     try:
                         await client.make_directory(file_dest.split('/')[1])
