@@ -4,7 +4,6 @@ Application of asynchronous programming to backup files by ftp and monitoring ch
 
 Using: asyncio, aioftp, watchdog and PyQt5
 
-
 ### Screenshots
 
 ![image](/screenshots/screen1.png)
