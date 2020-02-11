@@ -95,8 +95,8 @@ begin
   { Create the pages }
   
   HomologacaoPage := CreateInputQueryPage(wpWelcome,
-    'Homologa��o com o Hass', 'Onde est� instalado o Hass?',
-    'Por favor, especifique qual � o caminho do Upload de arquivos da OS no Hass');
+    'Homologação', 'Onde esta instalado?',
+    'Por favor, especifique qual é o caminho do Upload de arquivos');
   HomologacaoPage.Add('Caminho:', False);
 end;
 
@@ -108,7 +108,7 @@ begin
   if CurPageID = HomologacaoPage.ID then begin
     UploadsPath := HomologacaoPage.Values[0];
     if not DirExists(UploadsPath) then begin
-      MsgBox('Caminho n�o encontrado!', mbError, MB_OK);
+      MsgBox('Caminho não encontrado!', mbError, MB_OK);
       Result := False;
     end else
       Result := True;
