@@ -3,8 +3,8 @@
 
 #define MyAppName "GSyncftp"
 #define MyAppVersion "1.0"
-#define MyAppPublisher "EDCOM LTDA"
-#define MyAppURL "https://www.edcom.com.br/"
+#define MyAppPublisher "COORP LTDA"
+#define MyAppURL "https://www.sitename.com.br/"
 #define MyAppExeName "GSyncftp.exe"
 
 [Setup]
